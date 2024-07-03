@@ -1,0 +1,18 @@
+#!/bin/bash
+
+REPOS=(
+"/home/jay/Documents/dev/main-system"
+"/home/jay/Documents/LANG/backend"
+"/home/jay/Documents/dev/wj_system"
+"/home/jay/Documents/dev/sbp-engineering"
+"/home/jay/Documents/dev/kingston-engineering"
+"/home/jay/Documents/dev/kube-brocklesby"
+"/home/jay/Documents/dev/homecare"
+)
+
+# Loop through each repository and run `git sweep`
+for repo in "${REPOS[@]}"; do
+    echo "Cleaning up repository: $repo"
+    cd "$repo" || { echo "Failed to enter $repo"; continue; }
+    git sweep || { echo "Failed to clean up $repo"; continue; }
+done
